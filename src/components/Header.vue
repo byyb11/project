@@ -1,11 +1,13 @@
 <template>
-  <section id="header">
+  <section id="header" class="clearfix">
     <div class="search-box">
      <span class="iconfont">&#xe60b;</span>
       <input type="text" class="search-input" placeholder="输入搜索内容">
     </div>
     <div class="header-right">
-        <div class="remind iconfont">&#xe618;</div>
+      <div class="remind iconfont">&#xe618;</div>
+      <div class="user-name">王小贱</div>
+      <div class="user-icon">王</div>
     </div>
   </section>
 </template>
@@ -41,8 +43,10 @@ export default {
     height: 70px;
     background: #d5dde4;
     line-height: 70px;
+    min-width: 1200px;
     .search-box{
       margin-left:34px;
+      float: left;
       .iconfont{
         float: left;
       }
@@ -53,6 +57,42 @@ export default {
         outline: none;
       }
     }
+    .header-right{
+      float: right;
+      margin-right: 30px;
+      .remind,.user-name,.user-icon{
+        float: left;
+      }
+      .remind{
+        position: relative;
+        &:after{
+          content:"";
+          position: absolute;
+          right:-20px;
+          top: 23px;
+          height: 24px;
+          width: 2px;
+          background: #b9c6d3;
+        }
+      }
+     .user-name{
+       margin-left: 40px;
+       width: 80px;
+     }
 
+      .user-icon{
+        width: 40px;
+        margin-left: 14px;
+        height: 40px;
+        -webkit-border-radius: 50%;
+        -moz-border-radius: 50%;
+        border-radius: 50%;
+        background: #7b8da0;
+        color: #fff;
+        line-height: 40px;
+        text-align: center;
+        margin-top: 15px;
+      }
+    }
   }
 </style>
