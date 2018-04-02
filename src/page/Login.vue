@@ -19,7 +19,7 @@
       </div>
       <div class="remember">
         <input type="radio" id="reme-pwd">
-        <label for="reme" v-bind:class="{ remnalog: isActive }"  v-on:click="toggle"></label>
+        <label for="reme-pwd" v-bind:class="{ remnalog: isActive }"  v-on:click="toggle"></label>
         <span>记住用户名和密码</span>
       </div>
       <div class="login-btn">登录</div>
@@ -40,13 +40,34 @@ export default {
   },
   created () {
     var indexedDB = window.indexedDB || window.webkitIndexedDB || window.mozIndexedDB || window.msIndexedDB
+    var database = null
+    var data = {
+      'username': 'admin',
+      'password': 'admin'
+    }
     if (indexedDB) {
       var request = indexedDB.open('user', '1')
       request.onerror = function (e) {
         console.log(e.currentTarget.error.message)
       }
       request.onsuccess = function (e) {
-        myDB = e.target.result
+        console.log('!!!!!!!!')
+        console.log(request.result)
+        database = e.target.result
+      }
+      request.onupgradeneeded = function (e) {
+        database = e.target.result
+        console.log(database)
+        if (!database.objectStoreNames.contains('users')) {
+          var store = database.createObjectStore('users', {autoIncrement: true})
+          store.add(data)
+          request.onerror = function () {
+            console.error('数据库中已有该数据')
+          }
+          request.onsuccess = function () {
+            console.log('数据已存入数据库')
+          }
+        }
       }
     } else {
       alert('您的浏览器不支持indexedDB')
