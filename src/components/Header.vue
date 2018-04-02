@@ -23,22 +23,6 @@ export default {
 }
 </script>
 <style lang="less" scoped>
-  @font-face {
-    font-family: 'iconfont';  /* project id 611137 */
-    src: url('//at.alicdn.com/t/font_611137_nfdgfi5udqpycik9.eot');
-    src: url('//at.alicdn.com/t/font_611137_nfdgfi5udqpycik9.eot?#iefix') format('embedded-opentype'),
-    url('//at.alicdn.com/t/font_611137_nfdgfi5udqpycik9.woff') format('woff'),
-    url('//at.alicdn.com/t/font_611137_nfdgfi5udqpycik9.ttf') format('truetype'),
-    url('//at.alicdn.com/t/font_611137_nfdgfi5udqpycik9.svg#iconfont') format('svg');
-  }
-  .iconfont{
-    font-family:"iconfont" !important;
-    font-size:18px;font-style:normal;
-    -webkit-font-smoothing: antialiased;
-    -webkit-text-stroke-width: 0.2px;
-    -moz-osx-font-smoothing: grayscale;
-    float: left;
-  }
   #header{
     height: 70px;
     background: #d5dde4;
