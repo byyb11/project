@@ -19,9 +19,10 @@
       </div>
       <div class="remember">
         <input type="radio" id="reme-pwd">
-        <label for="reme" class="reme-analog"></label>
+        <label for="reme" v-bind:class="{ remnalog: isActive }"  v-on:click="toggle"></label>
         <span>记住用户名和密码</span>
       </div>
+      <div class="login-btn">登录</div>
     </section>
   </section>
 </template>
@@ -29,6 +30,26 @@
 export default {
   data () {
     return {
+      isActive: true
+    }
+  },
+  methods: {
+    toggle: function () {
+      this.isActive = !this.isActive
+    }
+  },
+  created () {
+    var indexedDB = window.indexedDB || window.webkitIndexedDB || window.mozIndexedDB || window.msIndexedDB
+    if (indexedDB) {
+      var request = indexedDB.open('user', '1')
+      request.onerror = function (e) {
+        console.log(e.currentTarget.error.message)
+      }
+      request.onsuccess = function (e) {
+        myDB = e.target.result
+      }
+    } else {
+      alert('您的浏览器不支持indexedDB')
     }
   }
 }
@@ -118,6 +139,8 @@ export default {
         position: relative;
         margin-left: 35px;
         color: #bdced8;
+        margin-top: 10px;
+        margin-bottom: 10px;
         input{
           visibility: hidden;
 
@@ -130,7 +153,7 @@ export default {
           width: 20px;
           border: 1px solid #eaeaec;
         }
-        .reme-analog{
+        .remnalog{
           background: #26aea4;
           &:after{
             content: '√';
@@ -144,6 +167,16 @@ export default {
             transform: translateX(-50%);
           }
         }
+      }
+      .login-btn{
+        width: 318px;
+        background: #25aca5;
+        height: 40px;
+        line-height: 40px;
+        color: #fff;
+        text-align: center;
+        margin: 22px auto 0;
+        font-size: 16px;
       }
     }
 
