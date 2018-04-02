@@ -6,7 +6,7 @@
     </div>
     <div class="header-right">
       <div class="remind iconfont">&#xe618;</div>
-      <div class="user-name">王小贱</div>
+      <div class="user-name clearfix"><span class="name">王小贱</span><b class="iconfont">&#xe822;</b></div>
       <div class="user-icon">王</div>
     </div>
   </section>
@@ -23,11 +23,29 @@ export default {
 }
 </script>
 <style lang="less" scoped>
+  @font-face {
+    font-family: 'iconfont';  /* project id 611137 */
+    src: url('//at.alicdn.com/t/font_611137_ai3mdr0ad7ycik9.eot');
+    src: url('//at.alicdn.com/t/font_611137_ai3mdr0ad7ycik9.eot?#iefix') format('embedded-opentype'),
+    url('//at.alicdn.com/t/font_611137_ai3mdr0ad7ycik9.woff') format('woff'),
+    url('//at.alicdn.com/t/font_611137_ai3mdr0ad7ycik9.ttf') format('truetype'),
+    url('//at.alicdn.com/t/font_611137_ai3mdr0ad7ycik9.svg#iconfont') format('svg');
+  }
+  .iconfont{
+    font-family:"iconfont" !important;
+    font-size:18px;font-style:normal;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-stroke-width: 0.2px;
+    -moz-osx-font-smoothing: grayscale;
+    float: left;
+  }
   #header{
     height: 70px;
     background: #d5dde4;
     line-height: 70px;
-    min-width: 1200px;
+    width: 85%;
+    float: left;
+
     .search-box{
       margin-left:34px;
       float: left;
@@ -62,6 +80,14 @@ export default {
      .user-name{
        margin-left: 40px;
        width: 80px;
+       .name{
+         float: left;
+       }
+       .iconfont{
+         font-size: 6px;
+         margin-left: 14px;
+         color: #2dc0e8;
+       }
      }
 
       .user-icon{

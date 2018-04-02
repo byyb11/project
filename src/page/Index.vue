@@ -1,10 +1,12 @@
 <template>
-  <section id="content">
+  <section id="content" class="clearfix">
+    <LeftMenu></LeftMenu>
     <Header></Header>
   </section>
 </template>
 <script>
 import Header from '@/components/Header'
+import LeftMenu from '@/components/LeftMenu'
 export default {
   name: 'Index',
   data () {
@@ -12,7 +14,8 @@ export default {
     }
   },
   components: {
-    Header
+    Header,
+    LeftMenu
   }
 }
 </script>
