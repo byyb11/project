@@ -8,9 +8,10 @@ Vue.use(Router)
 export default new Router({
   routes: [
     {
-      path: '/index',
+      path: '/Index',
       name: 'Index',
-      component: Index
+      component: Index,
+      meta: { requiresAuth: true }
     },
     {
       path: '/',

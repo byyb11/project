@@ -8,13 +8,13 @@
       <div class="user-box user-pwd">
         <div class="user-block uswd-block">
           <span class="iconfont">&#xe61c;</span>
-          <input type="text" placeholder="用户名">
+          <input type="text" placeholder="用户名" id="username">
         </div>
       </div>
       <div class="password-box user-pwd">
         <div class="'password-block uswd-block">
           <span class="iconfont">&#xe63c;</span>
-          <input type="password" placeholder="密码">
+          <input type="password" placeholder="密码" id="password">
         </div>
       </div>
       <div class="remember">
@@ -22,7 +22,7 @@
         <label for="reme-pwd" v-bind:class="{ remnalog: isActive }"  v-on:click="toggle"></label>
         <span>记住用户名和密码</span>
       </div>
-      <div class="login-btn">登录</div>
+      <div class="login-btn" v-on:click="login">登录</div>
     </section>
   </section>
 </template>
@@ -36,6 +36,23 @@ export default {
   methods: {
     toggle: function () {
       this.isActive = !this.isActive
+    },
+    login: function () {
+      let userName = document.getElementById('username')
+      let password = document.getElementById('password')
+      let userData = {
+        userName: userName,
+        password: password
+      }
+      this.axios.get('./static/json/user.json', userData).then(response => {
+      //  sessionStorage.setItem('key', 'a')
+        console.log(response)
+        if (sessionStorage.getItem('username')) {
+          this.$router.push({ path: '/Index' })
+        }
+      }).catch(err => {
+        console.log(err)
+      })
     }
   }
 }
