@@ -37,41 +37,6 @@ export default {
     toggle: function () {
       this.isActive = !this.isActive
     }
-  },
-  created () {
-    var indexedDB = window.indexedDB || window.webkitIndexedDB || window.mozIndexedDB || window.msIndexedDB
-    var database = null
-    var data = {
-      'username': 'admin',
-      'password': 'admin'
-    }
-    if (indexedDB) {
-      var request = indexedDB.open('user', '1')
-      request.onerror = function (e) {
-        console.log(e.currentTarget.error.message)
-      }
-      request.onsuccess = function (e) {
-        console.log('!!!!!!!!')
-        console.log(request.result)
-        database = e.target.result
-      }
-      request.onupgradeneeded = function (e) {
-        database = e.target.result
-        console.log(database)
-        if (!database.objectStoreNames.contains('users')) {
-          var store = database.createObjectStore('users', {autoIncrement: true})
-          store.add(data)
-          request.onerror = function () {
-            console.error('数据库中已有该数据')
-          }
-          request.onsuccess = function () {
-            console.log('数据已存入数据库')
-          }
-        }
-      }
-    } else {
-      alert('您的浏览器不支持indexedDB')
-    }
   }
 }
 </script>
@@ -198,6 +163,7 @@ export default {
         text-align: center;
         margin: 22px auto 0;
         font-size: 16px;
+        cursor: pointer;
       }
     }
 
