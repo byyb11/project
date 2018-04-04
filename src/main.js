@@ -12,20 +12,14 @@ Vue.use(VueRouter)
 Vue.config.productionTip = false
 
 router.beforeEach((to, from, next) => {
-  if (to.meta.requireAuth) { // 判断路由是否需要登录权限
+  if (to.meta.requiresAuth) {
     if (sessionStorage.getItem('username')) {
-      next({
-        path: '/Index'
-      })
+      next()
     } else {
-      next({
-        path: '/'
-      })
+      next('/')
     }
   } else {
-    next({
-      path: '/'
-    })
+    next()
   }
 })
 /* eslint-disable no-new */
