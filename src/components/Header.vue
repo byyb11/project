@@ -43,9 +43,7 @@ export default {
     height: 70px;
     background: #d5dde4;
     line-height: 70px;
-    width: 85%;
-    float: left;
-
+    width: 100%;
     .search-box{
       margin-left:34px;
       float: left;
@@ -57,6 +55,7 @@ export default {
         background: #d5dde4;
         border: 0;
         outline: none;
+        line-height: 10px;
       }
     }
     .header-right{

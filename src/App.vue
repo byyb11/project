@@ -25,11 +25,11 @@ export default {
   @import "./assets/css/base.less";
   @font-face {
     font-family: 'iconfont';  /* project id 611137 */
-    src: url('//at.alicdn.com/t/font_611137_d3pn5nkngwcm1jor.eot');
-    src: url('//at.alicdn.com/t/font_611137_d3pn5nkngwcm1jor.eot?#iefix') format('embedded-opentype'),
-    url('//at.alicdn.com/t/font_611137_d3pn5nkngwcm1jor.woff') format('woff'),
-    url('//at.alicdn.com/t/font_611137_d3pn5nkngwcm1jor.ttf') format('truetype'),
-    url('//at.alicdn.com/t/font_611137_d3pn5nkngwcm1jor.svg#iconfont') format('svg');
+    src: url('//at.alicdn.com/t/font_611137_1oz9k0gybzc9pb9.eot');
+    src: url('//at.alicdn.com/t/font_611137_1oz9k0gybzc9pb9.eot?#iefix') format('embedded-opentype'),
+    url('//at.alicdn.com/t/font_611137_1oz9k0gybzc9pb9.woff') format('woff'),
+    url('//at.alicdn.com/t/font_611137_1oz9k0gybzc9pb9.ttf') format('truetype'),
+    url('//at.alicdn.com/t/font_611137_1oz9k0gybzc9pb9.svg#iconfont') format('svg');
   }
   .iconfont{
     font-family:"iconfont" !important;
@@ -43,6 +43,8 @@ export default {
     .wh(100%,100%);
     body{
     .wh(100%,100%);
+      min-width: 1200px;
+      min-height: 600px;
       #app{
         .wh(100%,100%);
       }

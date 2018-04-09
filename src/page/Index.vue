@@ -1,7 +1,10 @@
 <template>
   <section id="content" class="clearfix">
     <LeftMenu></LeftMenu>
-    <Header></Header>
+    <section class="right-content">
+      <Header></Header>
+      <router-view></router-view>
+    </section>
   </section>
 </template>
 <script>
@@ -20,5 +23,11 @@ export default {
 }
 </script>
 <style lang="less" scoped>
-
+#content{
+  height: 100%;
+  .right-content{
+    float: left;
+    width: 85%;
+  }
+}
 </style>

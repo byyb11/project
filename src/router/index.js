@@ -3,15 +3,20 @@ import Router from 'vue-router'
 // import HelloWorld from '@/components/HelloWorld'
 import Index from '@/page/Index'
 import Login from '@/page/Login'
+import ContentIndex from '@/components/ContentIndex'
 Vue.use(Router)
 
 export default new Router({
   routes: [
     {
       path: '/Index',
-      name: 'Index',
       component: Index,
-      meta: { requiresAuth: true }
+      meta: { requiresAuth: true },
+      children: [{
+        path: '/',
+        name: 'ContentIndex',
+        component: ContentIndex
+      }]
     },
     {
       path: '/',

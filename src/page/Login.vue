@@ -45,7 +45,7 @@ export default {
         password: password
       }
       this.axios.get('./static/json/user.json', userData).then(response => {
-        // sessionStorage.setItem('username', 'a')
+        sessionStorage.setItem('username', 'a')
         if (sessionStorage.getItem('username')) {
           this.$router.push({ path: '/Index' })
         }
