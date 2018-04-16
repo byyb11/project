@@ -1,6 +1,12 @@
 <template>
   <section id="left-menu">
-    <div>
+    <v-bar wrapper="wrapper"
+           vBar="verticalBarClass"
+           vBarInternal="verticalBarInternalClass"
+           hBar="horizontalBarClass"
+           hBarInternal="horizontalBarInternalClass">
+      <!-- your content -->
+
       <h1>菜单</h1>
       <section id="menu-list">
         <ul>
@@ -20,10 +26,11 @@
           </li>
         </ul>
       </section>
-    </div>
+    </v-bar>
   </section>
 </template>
 <script>
+import VBar from 'v-bar'
 export default {
   data () {
     return {
@@ -152,6 +159,7 @@ export default {
       activeClass: 'active'
     }
   },
+  components: { VBar },
   methods: {
     tarson: function (obj) {
       obj.targetson = !obj.targetson
@@ -159,28 +167,14 @@ export default {
   }
 }
 </script>
-<style lang="less" scoped>
-  #left-menu {
-    position: relative;
-    max-width: 100%;
-    max-height: 100%;
-    padding: 10px;
-    box-sizing: border-box;
-    overflow: hidden;
-    background: #fff;
-    color: #2b2b2b;
-    font: 14px Arial;
-    text-align: left;
-    -webkit-transform-style: preserve-3d;
-    outline: whitesmoke solid;
-  }
-
-  #left-menu>div {
-    padding-right: 40px;
-    margin-right: -30px;
-    max-height: 100%;
-    overflow-y: scroll;
-  }
+<style lang="less" >
+.wrapper{
+  width: 100%;
+  height: 100%;
+}
+.verticalBarInternalClass{
+  background-color:#fff!important;
+}
 #left-menu{
   width: 15%;
   background: #354656;
