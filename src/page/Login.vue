@@ -16,6 +16,7 @@
           <span class="iconfont">&#xe63c;</span>
           <input type="password" placeholder="密码" id="password">
         </div>
+        <span id="error-title"></span>
       </div>
       <div class="remember">
         <input type="radio" id="reme-pwd">
@@ -38,20 +39,28 @@ export default {
       this.isActive = !this.isActive
     },
     login: function () {
-      let userName = document.getElementById('username')
-      let password = document.getElementById('password')
+      let userName = document.getElementById('username').value
+      let password = document.getElementById('password').value
+      let errorTitle = document.getElementById('error-title')
       let userData = {
         userName: userName,
         password: password
       }
-      this.axios.get('./static/json/user.json', userData).then(response => {
-        sessionStorage.setItem('username', 'a')
-        if (sessionStorage.getItem('username')) {
-          this.$router.push({ path: '/Index' })
-        }
-      }).catch(err => {
-        console.log(err)
-      })
+      if (userName && password) {
+        errorTitle.innerText = ''
+        this.axios.get('http://localhost:8888/', {
+          params: userData
+        }).then(response => {
+          console.log(response)
+          if (response) {
+            // this.$router.push({ path: '/Index' })
+          }
+        }).catch(err => {
+          console.log(err)
+        })
+      } else {
+        errorTitle.innerText = '用户名或密码不能为空'
+      }
     }
   }
 }
@@ -102,6 +111,19 @@ export default {
         position: relative;
         &.password-box{
           background: #fff;
+          #error-title{
+            position: absolute;
+            // width: 318px;
+            color:red;
+            bottom: 0;
+            left: 50%;
+            line-height: 0;
+            -webkit-transform: translateX(-50%);
+            -moz-transform: translateX(-50%);
+            -ms-transform: translateX(-50%);
+            -o-transform: translateX(-50%);
+            transform: translateX(-50%);
+          }
         }
         .uswd-block{
           width: 318px;

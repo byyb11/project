@@ -15,7 +15,8 @@ export default new Router({
       children: [{
         path: '/',
         name: 'ContentIndex',
-        component: ContentIndex
+        component: ContentIndex,
+        meta: { requiresAuth: true }
       }]
     },
     {
